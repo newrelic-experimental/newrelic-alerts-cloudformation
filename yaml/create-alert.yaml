@@ -1,0 +1,43 @@
+AWSTemplateFormatVersion: "2010-09-09"
+Description: A sample template
+Resources:
+  MyEC2Instance:
+    Type: "AWS::EC2::Instance"
+    Properties:
+      # You may have to change this, this is the current AMI for Ubuntu 18.04 LTS
+      ImageId: "ami-08fd8ae3806f09a08"
+      InstanceType: t2.micro
+      KeyName: <YOUR_SSH_KEY_NAME_HERE>
+      Tags:
+        - Key: "Owner"
+          Value: "<YOUR_NAME_HERE>"
+      BlockDeviceMappings:
+        - DeviceName: /dev/sdm
+          Ebs:
+            VolumeType: io1
+            Iops: 200
+            DeleteOnTermination: false
+            VolumeSize: 20
+  NewRelicAlert:
+    Type: NewRelic::Alerts::NrqlAlert
+    Properties:
+      ApiKey: <YOUR_USER_API_KEY_HERE>
+      PolicyId: <YOUR_ALERT_POLICY_ID_HERE>
+      NrqlCondition:
+        Enabled: true
+        ExpectedGroups: 1
+        IgnoreOverlap: true
+        Name: Alert Condition Test
+        Nrql:
+          Query: "SELECT count(*) FROM AwsLambdaInvocation WHERE provider.functionName = 'LambdaNode'"
+          SinceValue: "1"
+        RunbookUrl: http://example.com/runbook
+        Terms:
+          - Duration: "120"
+            Operator: "equal"
+            Priority: "critical"
+            Threshold: "1"
+            TimeFunction: "any"
+        Type: "integer"
+        ValueFunction: "sum"
+        ViolationTimeLimitSeconds: 7200

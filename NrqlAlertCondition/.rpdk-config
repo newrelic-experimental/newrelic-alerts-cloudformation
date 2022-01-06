@@ -1,0 +1,18 @@
+{
+    "artifact_type": "RESOURCE",
+    "typeName": "NewRelic::Alerts::NrqlAlert",
+    "language": "java",
+    "runtime": "java8",
+    "entrypoint": "com.newrelic.alerts.nrqlalert.HandlerWrapper::handleRequest",
+    "testEntrypoint": "com.newrelic.alerts.nrqlalert.HandlerWrapper::testEntrypoint",
+    "settings": {
+        "namespace": [
+            "com",
+            "newrelic",
+            "alerts",
+            "nrqlalert"
+        ],
+        "protocolVersion": "2.0.0"
+    },
+    "executableEntrypoint": "com.newrelic.alerts.nrqlalert.HandlerWrapperExecutable"
+}

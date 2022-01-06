@@ -9,52 +9,62 @@
 ![GitHub last commit](https://img.shields.io/github/last-commit/newrelic-experimental/newrelic-experimental-FIT-template)
 ![GitHub Release Date](https://img.shields.io/github/release-date/newrelic-experimental/newrelic-experimental-FIT-template)
 
-
 ![GitHub issues](https://img.shields.io/github/issues/newrelic-experimental/newrelic-experimental-FIT-template)
 ![GitHub issues closed](https://img.shields.io/github/issues-closed/newrelic-experimental/newrelic-experimental-FIT-template)
 ![GitHub pull requests](https://img.shields.io/github/issues-pr/newrelic-experimental/newrelic-experimental-FIT-template)
 ![GitHub pull requests closed](https://img.shields.io/github/issues-pr-closed/newrelic-experimental/newrelic-experimental-FIT-template)
 
-# [Project Name] [build badges go here when available]
+# newrelic-alerts-cloudformation
+This repository provides an AWS CloudFormation Resource for creating or updating New Relic NRQL Alerts from a CloudFormation Stack.
 
->[Brief description - what is the project and value does it provide? How often should users expect to get releases? How is versioning set up? Where does this project want to go?]
+This documentation assumes fluency in both NRQL Alerts and CloudFormation.
 
 ## Installation
+- [Setup your environment for developing CloudFormation extensions](https://docs.aws.amazon.com/cloudformation-cli/latest/userguide/what-is-cloudformation-cli.html). At a minimum do this for Java as it's needed here.
+- Ensure you have at least Java 8 installed
+- Ensure you have the current version of Maven installed
+- Clone this repository
+- `cd` into the cloned repository directory
+- Run `mvn clean package` 
+- `cd` into `NrqlAlertCondition`
+- To install the `NewRelic::Alerts::NrqlAlert` Resource into AWS as a privately registered extension run
+  - `cfn submit --region <YOUR_REGION_HERE> --set-default`
+  - You can validate the success of this operation by looking at the `CloudFormation > Registry: Activated extensions` console![](.images/Activated%20Extensions.png). Select the `Resource types` tab and set the drop down to `Privately registered`. If everything worked as it should you'll see the `NewRelic::Alerts::NrqlAlert` resource listed there.
 
-> [Include a step-by-step procedure on how to get your code installed. Be sure to include any third-party dependencies that need to be installed separately]
-
-## Getting Started
-
->[Simple steps to start working with the software similar to a "Hello World"]
+At this point the Resource is ready for use in your Stacks.
 
 ## Usage
+- See [create-alert.yaml](yaml/create-alert.yaml) for a sample of how to use the Resource.
+- [The full schema for the Resource is here](NrqlAlertCondition/newrelic-alerts-nrqlalert.json).
+- [The Alerts conditions API field names](https://docs.newrelic.com/docs/alerts-applied-intelligence/new-relic-alerts/advanced-alerts/rest-api-alerts/alerts-conditions-api-field-names/) is also helpful
 
->[**Optional** - Include more thorough instructions on how to use the software. This section might not be needed if the Getting Started section is enough. Remove this section if it's not needed.]
+### Trouble shooting
+- If Stack creation fails first check the `CloudFormation > Stacks` console for your Stack. The `Status reason` column of the `Events` tab may have some helpful information.
+- Next try the `CloudWatch > Log groups > newrelic-alerts-nrqlalert-logs` console ![](.images/CloudWatch%20Logs.png) for the current `Log events`. There you should find a detailed error message.
+- Once in a while a bad Alert definition will not successfully roll back. When that happens go into the CloudWatch console, manually delete the Stack, and then `update-stack`.
 
-## Building
+## Developer Notes
+- To install a new version of the Resource into CloudFormation
+  - `mvn clean package`
+  - `cfn submit --region <YOUR_REGION_HERE> --set-default`
+- To test the Resource `create` or `update` the Stack
+  - `aws cloudformation update-stack --region <YOUR_REGION_HERE> --template-body "file://yaml/create-alert.yaml" --stack-name <YOUR_COOL_STACK_NAME_HERE>`
 
->[**Optional** - Include this section if users will need to follow specific instructions to build the software from source. Be sure to include any third party build dependencies that need to be installed separately. Remove this section if it's not needed.]
+### Helpful Links
+- [CloudFormation](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/Welcome.html)
+- [CloudFormation CloudWatch Alarm](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-cw-alarm.html)
+- [CloudFormation CLI](https://docs.aws.amazon.com/cloudformation-cli/latest/userguide/what-is-cloudformation-cli.html)
 
-## Testing
-
->[**Optional** - Include instructions on how to run tests if we include tests with the codebase. Remove this section if it's not needed.]
-
+### Dire warnings
+- [Do not use this blog post as a guide/reference](https://newrelic.com/blog/how-to-relic/create-alerts-aws-cloudformation) as it points the Resource at the original, broken, zip file.
 ## Support
 
 New Relic has open-sourced this project. This project is provided AS-IS WITHOUT WARRANTY OR DEDICATED SUPPORT. Issues and contributions should be reported to the project here on GitHub.
 
->[Choose 1 of the 2 options below for Support details, and remove the other one.]
-
->[Option 1 - no specific thread in Community]
->We encourage you to bring your experiences and questions to the [Explorers Hub](https://discuss.newrelic.com) where our community members collaborate on solutions and new ideas.
-
->[Option 2 - thread in Community]
->New Relic hosts and moderates an online forum where customers can interact with New Relic employees as well as other customers to get help and share best practices. Like all official New Relic open source projects, there's a related Community topic in the New Relic Explorers Hub.
->You can find this project's topic/threads here: [URL for Community thread]
+We encourage you to bring your experiences and questions to the [Explorers Hub](https://discuss.newrelic.com) where our community members collaborate on solutions and new ideas.
 
 ## Contributing
-
-We encourage your contributions to improve [Project Name]! Keep in mind when you submit your pull request, you'll need to sign the CLA via the click-through using CLA-Assistant. You only have to sign the CLA one time per project. If you have any questions, or to execute our corporate CLA, required if your contribution is on behalf of a company, please drop us an email at opensource@newrelic.com.
+We encourage your contributions to improve newrelic-alerts-cloudformation! Keep in mind when you submit your pull request, you'll need to sign the CLA via the click-through using CLA-Assistant. You only have to sign the CLA one time per project. If you have any questions, or to execute our corporate CLA, required if your contribution is on behalf of a company, please drop us an email at opensource@newrelic.com.
 
 **A note about vulnerabilities**
 
@@ -63,7 +73,6 @@ As noted in our [security policy](../../security/policy), New Relic is committed
 If you believe you have found a security vulnerability in this project or any of New Relic's products or websites, we welcome and greatly appreciate you reporting it to New Relic through [HackerOne](https://hackerone.com/newrelic).
 
 ## License
+newrelic-alerts-cloudformation is licensed under the [Apache 2.0](http://apache.org/licenses/LICENSE-2.0.txt) License.
 
-[Project Name] is licensed under the [Apache 2.0](http://apache.org/licenses/LICENSE-2.0.txt) License.
-
->[If applicable: [Project Name] also uses source code from third-party libraries. You can find full details on which libraries are used and the terms under which they are licensed in the third-party notices document.]
+newrelic-alerts-cloudformation also uses source code from third-party libraries. You can find full details on which libraries are used and the terms under which they are licensed in the third-party notices document.
