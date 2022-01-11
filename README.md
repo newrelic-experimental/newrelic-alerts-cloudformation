@@ -1,18 +1,18 @@
 [![New Relic Experimental header](https://github.com/newrelic/opensource-website/raw/master/src/images/categories/Experimental.png)](https://opensource.newrelic.com/oss-category/#new-relic-experimental)
 
-![GitHub forks](https://img.shields.io/github/forks/newrelic-experimental/newrelic-experimental-FIT-template?style=social)
-![GitHub stars](https://img.shields.io/github/stars/newrelic-experimental/newrelic-experimental-FIT-template?style=social)
-![GitHub watchers](https://img.shields.io/github/watchers/newrelic-experimental/newrelic-experimental-FIT-template?style=social)
+![GitHub forks](https://img.shields.io/github/forks/newrelic-experimental/newrelic-alerts-cloudformation?style=social)
+![GitHub stars](https://img.shields.io/github/stars/newrelic-experimentalnewrelic-alerts-cloudformation?style=social)
+![GitHub watchers](https://img.shields.io/github/watchers/newrelic-experimental/newrelic-alerts-cloudformation?style=social)
 
-![GitHub all releases](https://img.shields.io/github/downloads/newrelic-experimental/newrelic-experimental-FIT-template/total)
-![GitHub release (latest by date)](https://img.shields.io/github/v/release/newrelic-experimental/newrelic-experimental-FIT-template)
-![GitHub last commit](https://img.shields.io/github/last-commit/newrelic-experimental/newrelic-experimental-FIT-template)
-![GitHub Release Date](https://img.shields.io/github/release-date/newrelic-experimental/newrelic-experimental-FIT-template)
+![GitHub all releases](https://img.shields.io/github/downloads/newrelic-experimental/newrelic-alerts-cloudformation/total)
+![GitHub release (latest by date)](https://img.shields.io/github/v/release/newrelic-experimental/newrelic-alerts-cloudformation)
+![GitHub last commit](https://img.shields.io/github/last-commit/newrelic-experimental/newrelic-alerts-cloudformation)
+![GitHub Release Date](https://img.shields.io/github/release-date/newrelic-experimental/newrelic-alerts-cloudformation)
 
-![GitHub issues](https://img.shields.io/github/issues/newrelic-experimental/newrelic-experimental-FIT-template)
-![GitHub issues closed](https://img.shields.io/github/issues-closed/newrelic-experimental/newrelic-experimental-FIT-template)
-![GitHub pull requests](https://img.shields.io/github/issues-pr/newrelic-experimental/newrelic-experimental-FIT-template)
-![GitHub pull requests closed](https://img.shields.io/github/issues-pr-closed/newrelic-experimental/newrelic-experimental-FIT-template)
+![GitHub issues](https://img.shields.io/github/issues/newrelic-experimental/newrelic-alerts-cloudformation)
+![GitHub issues closed](https://img.shields.io/github/issues-closed/newrelic-experimental/newrelic-alerts-cloudformation)
+![GitHub pull requests](https://img.shields.io/github/issues-pr/newrelic-experimental/newrelic-alerts-cloudformation)
+![GitHub pull requests closed](https://img.shields.io/github/issues-pr-closed/newrelic-experimental/newrelic-alerts-cloudformation)
 
 # newrelic-alerts-cloudformation
 This repository provides an AWS CloudFormation Resource for creating or updating New Relic NRQL Alerts from a CloudFormation Stack.
