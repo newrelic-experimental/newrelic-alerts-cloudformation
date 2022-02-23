@@ -55,8 +55,6 @@ At this point the Resource is ready for use in your Stacks.
 - [CloudFormation CloudWatch Alarm](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-cw-alarm.html)
 - [CloudFormation CLI](https://docs.aws.amazon.com/cloudformation-cli/latest/userguide/what-is-cloudformation-cli.html)
 
-### Dire warnings
-- [Do not use this blog post as a guide/reference](https://newrelic.com/blog/how-to-relic/create-alerts-aws-cloudformation) as it points the Resource at the original, broken, zip file.
 ## Support
 
 New Relic has open-sourced this project. This project is provided AS-IS WITHOUT WARRANTY OR DEDICATED SUPPORT. Issues and contributions should be reported to the project here on GitHub.
